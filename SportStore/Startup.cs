@@ -7,6 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using SportStore.Models;
+
 
 namespace SportStore
 {
@@ -23,6 +26,10 @@ namespace SportStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<StoreDbContext>(opts => {
+                opts.UseSqlServer(
+                Configuration["ConnectionStrings:SportsStoreVeritabani"]);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
