@@ -20,6 +20,7 @@ namespace SportStore.Controllers
 
         public IActionResult Index()
         {
+            // İlk commit
             return View();
         }
 
