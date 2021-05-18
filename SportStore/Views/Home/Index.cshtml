@@ -1,8 +1,11 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IQueryable<Urun>
+
+@foreach(var urun in Model)
+{
+    <div>
+        <h3>@urun.UrunAdi</h3>
+        @urun.UrunAciklamasi
+        <h4>@urun.UrunFiyati.ToString("c")</h4>
+    </div>
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
