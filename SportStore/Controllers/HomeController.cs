@@ -12,16 +12,18 @@ namespace SportStore.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private IStoreRepository depo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IStoreRepository _depo)
         {
             _logger = logger;
+            depo = _depo;
         }
 
         public IActionResult Index()
         {
             // İlk commit
-            return View();
+            return View(depo.Urunler);
         }
 
         public IActionResult Privacy()
