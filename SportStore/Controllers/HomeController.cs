@@ -13,6 +13,7 @@ namespace SportStore.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private IStoreRepository depo;
+        public int pageSize = 2;
 
         public HomeController(ILogger<HomeController> logger, IStoreRepository _depo)
         {
@@ -20,10 +21,12 @@ namespace SportStore.Controllers
             depo = _depo;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int urunSayfasi=1)
         {
             // İlk commit
-            return View(depo.Urunler);
+            return View(depo.Urunler.OrderBy(p => p.UrunID)
+                .Skip((urunSayfasi - 1) * pageSize)
+                .Take(pageSize));
         }
 
         public IActionResult Privacy()
