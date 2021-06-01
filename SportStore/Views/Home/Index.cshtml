@@ -1,6 +1,6 @@
-﻿@model IQueryable<Urun>
+﻿@model UrunListesiViewModel
 
-@foreach(var urun in Model)
+@foreach(var urun in Model.Urunler)
 {
     <div>
         <h3>@urun.UrunAdi</h3>
@@ -9,3 +9,4 @@
     </div>
 }
 
+<div sayfa-model="@Model.sayfalamaBilgisi" sayfa-eylemi="Index"></div>

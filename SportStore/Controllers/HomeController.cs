@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using SportStore.Models.ViewModels;
 
 namespace SportStore.Controllers
 {
@@ -24,9 +25,18 @@ namespace SportStore.Controllers
         public IActionResult Index(int urunSayfasi=1)
         {
             // İlk commit
-            return View(depo.Urunler.OrderBy(p => p.UrunID)
+            return View(new UrunListesiViewModel
+            {
+                Urunler = depo.Urunler.OrderBy(p => p.UrunID)
                 .Skip((urunSayfasi - 1) * pageSize)
-                .Take(pageSize));
+                .Take(pageSize),
+                sayfalamaBilgisi = new SayfalamaBilgi
+                {
+                    AktifSayfa = urunSayfasi,
+                    SayfaBasinaKayit = pageSize,
+                    ToplamKayit = depo.Urunler.Count()
+                }
+            });       
         }
 
         public IActionResult Privacy()
