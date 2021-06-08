@@ -1,12 +1,21 @@
 ﻿@model UrunListesiViewModel
 
-@foreach(var urun in Model.Urunler)
+@foreach (var urun in Model.Urunler)
 {
-    <div>
-        <h3>@urun.UrunAdi</h3>
-        @urun.UrunAciklamasi
-        <h4>@urun.UrunFiyati.ToString("c")</h4>
+    <div class="card card-outline-primary m-1 p-1">
+        <div class="bg-faded p-1">
+            <h4>
+                @urun.UrunAdi<span class="badge badge-pill badge-primary" style="float:right">
+                <small>@urun.UrunFiyati.ToString("c")</small>
+            </span>
+        </h4>
     </div>
+    <div class="card-text p-1">@urun.UrunAciklamasi</div>
+</div>
 }
 
-<div sayfa-model="@Model.sayfalamaBilgisi" sayfa-eylemi="Index"></div>
+
+<div sayfa-model="@Model.sayfalamaBilgisi" sayfa-eylemi="Index" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary" class="btn-group pull-right m-1">
+</div>
