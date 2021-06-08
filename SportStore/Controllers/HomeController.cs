@@ -22,12 +22,13 @@ namespace SportStore.Controllers
             depo = _depo;
         }
 
-        public IActionResult Index(int urunSayfasi=1)
+        public IActionResult Index(string kategori, int urunSayfasi=1)
         {
             // İlk commit
             return View(new UrunListesiViewModel
             {
                 Urunler = depo.Urunler.OrderBy(p => p.UrunID)
+                .Where(p => p.UrunKategorisi == null || p.UrunKategorisi == kategori )
                 .Skip((urunSayfasi - 1) * pageSize)
                 .Take(pageSize),
                 sayfalamaBilgisi = new SayfalamaBilgi

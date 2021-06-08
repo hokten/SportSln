@@ -9,5 +9,6 @@ namespace SportStore.Models.ViewModels
     {
         public IEnumerable<Urun> Urunler { get; set; }
         public SayfalamaBilgi sayfalamaBilgisi { get; set; }
+        public string varsayilanKategori { get; set; }
     }
 }

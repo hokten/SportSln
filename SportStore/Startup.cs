@@ -52,8 +52,14 @@ namespace SportStore
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "sayfalama",
+                endpoints.MapControllerRoute("catpage",
+                    "{category}/Sayfa{urunSayfasi:int}",
+                    new { Controller = "Home", action = "Index" });
+                endpoints.MapControllerRoute("sayfa", "Sayfa{urunSayfasi:int}",
+                    new { Controller = "Home", action = "Index", urunSayfasi = 1 });
+                endpoints.MapControllerRoute("kategori", "{kategori}",
+                    new { Controller = "Home", action = "Index", productPage = 1 });
+                endpoints.MapControllerRoute(name: "sayfalama",
                     pattern: "urunler/sayfa{urunSayfasi}",
                     defaults: new { Controller = "Home", action = "Index" });
                 endpoints.MapControllerRoute(
