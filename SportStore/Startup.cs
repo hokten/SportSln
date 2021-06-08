@@ -53,6 +53,10 @@ namespace SportStore
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "sayfalama",
+                    pattern: "urunler/sayfa{urunSayfasi}",
+                    defaults: new { Controller = "Home", action = "Index" });
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
