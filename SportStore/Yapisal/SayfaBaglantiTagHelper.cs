@@ -29,6 +29,10 @@ namespace SportStore.Yapisal
 
         public SayfalamaBilgi SayfaModel { get; set; }
         public string SayfaEylemi { get; set; }
+
+        [HtmlAttributeName(DictionaryAttributePrefix = "page-url-")]
+        public Dictionary<string, object> PageUrlValues { get; set; }
+= new Dictionary<string, object>();
         public bool PageClassesEnabled { get; set; } = false;
         public string PageClass { get; set; }
         public string PageClassNormal { get; set; }
@@ -40,7 +44,8 @@ namespace SportStore.Yapisal
             for(int i=1; i<= SayfaModel.ToplamSayfaSayisi; i++)
             {
                 TagBuilder tag = new TagBuilder("a");
-                tag.Attributes["href"] = urlHelper.Action(SayfaEylemi, new { urunSayfasi = i });
+                PageUrlValues["urunSayfasi"] = i;
+                tag.Attributes["href"] = urlHelper.Action(SayfaEylemi, PageUrlValues);
                 if (PageClassesEnabled)
                 {
                     tag.AddCssClass(PageClass);

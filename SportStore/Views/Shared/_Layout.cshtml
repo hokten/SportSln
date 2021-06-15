@@ -31,7 +31,12 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            @RenderBody()
+            <div id="categories" class="col-3">
+                <vc:gezinme-menusu />
+            </div>
+            <div class="col-9">
+                @RenderBody()
+            </div>
         </main>
     </div>
 
